@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Spring WebSocket Messaging</title>
+    <link rel="shortcut icon" th:href="@{/favicon.ico}" href="../static/favicon.ico"/>
+    <script th:src="@{/assets/js/jquery.min.js}" src="js/jquery.min.js"></script>
+    <script th:src="@{/assets/js/sockjs.min.js}" src="js/sockjs.min.js"></script>
+    <script th:src="@{/assets/js/stomp.min.js}" src="js/stomp.min.js"></script>
+    <script src="/WebSocketController.js"></script>
+</head>
+<body onload="webSocket.disconnect()">
+<div>
+    <div>
+        <button id="connect" onclick="webSocket.connect();">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="webSocket.disconnect();">
+            Disconnect
+        </button>
+    </div>
+    <br />
+    <div id="mural">
+        <input type="text" id="text" placeholder="Write a message..."/>
+        <button id="sendMessage" onclick="webSocket.sendMessage();">Send</button>
+        <p id="response"></p>
+    </div>
+</div>
+</body>
+</html>

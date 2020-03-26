@@ -1,0 +1,34 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: Spingboot-Websocket-RabbitMQ
+  mvc:
+    throw-exception-if-no-handler-found: true
+    dispatch-options-request: true
+    static-path-pattern: /**
+  resources:
+    add-mappings: false
+    static-locations: classpath:/static/
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: non_null
+  rabbitmq:
+    addresses: 127.0.0.1
+    port: 5672
+    virtual-host: /
+    connection-timeout: 15000
+    publisher-returns: true
+    template:
+      mandatory: true
+    listener:
+      simple:
+        acknowledge-mode: manual
+        concurrency: 5
+        max-concurrency: 10
